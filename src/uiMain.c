@@ -17,12 +17,12 @@ int main(){
     }
     puts(input);
     pass = input;
-    char* start = word_start(pass);
-    char* end = word_terminator(start);
-    printf("Here is char*= %c\n", *start);
+    char  *start = word_start(pass);
+    // char *end = word_terminator(start);
     // printf("Here is char* end= %c\n", *end);
 
-    printf("Word count = %i\n",count_words(start));
+    // printf("Word count = %i\n",count_words(start));
+     char **tokens = tokenize(pass);
   }
   return 0;
 
