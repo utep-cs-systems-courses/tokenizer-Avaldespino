@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 int space_char(char c){
+  if(c =='\0')return 0;
   if(c == '\t' || c == ' '){
     // printf("Space_char = %c\n",c);
     return 1;}
@@ -13,14 +14,15 @@ int non_space_char(char c){
   if(!space_char(c)){
     // printf("Returning non space true\n");
     return 1;}
+  printf("Returning false\n");
   return 0;
 }
 
 char *word_start(char *str){
   while(*str){
     // printf("word_start %c\n",*str);
-    if(non_space_char(*str)){
-      //printf("returning a string\n");
+    if(non_space_char(*str)==1){
+      printf("returning a string = %c,%i\n",*str,non_space_char(*str));
       return str;}
     str++;
   }
@@ -53,6 +55,8 @@ int count_words(char *str){
     
    
   }
+
+char *copy_str(char *inStr, short len){}
 
   return counter;
 }
