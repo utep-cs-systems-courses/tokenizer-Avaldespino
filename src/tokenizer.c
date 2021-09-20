@@ -60,3 +60,12 @@ char *copy_str(char *inStr, short len){}
 
   return counter;
 }
+char *copy_str(char *inStr, short len){
+
+  char* new_string = (char*)malloc(len+1);
+
+  while((*inStr++ = *new_string++)!= '\0');
+  new_string[len+1]='\0';
+  return new_string;
+
+}

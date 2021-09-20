@@ -6,8 +6,9 @@
 int main(){
   char input[256];
   char *pass = input;
- 
   while(1){
+
+    
  puts(">Enter input, use q to break");
     fgets(input,256,stdin);
     fflush(stdout);
