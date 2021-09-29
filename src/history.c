@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <tokenizer.h>
+#include "history.h"
+#include "tokenizer.h"
 
 List* init_history(){
   List* list = (List*)malloc(sizeof(List));
@@ -9,13 +10,61 @@ List* init_history(){
 
 }
 void add_history(List *list, char *str){
-Item node = NULL;
-node = malloc(sizeof(*Item));
-
+Item *node;
+ node = (Item*)malloc(sizeof(Item));
+ 
+char *copy = copy_str(str,256);
+node -> str = copy;
 int id = 0;
-if(list.root == NULL){
-node.id = id;
-list.root = node;
+if(list -> root == NULL){
+node -> id = id;
+list -> root = node;
+}
+ else{
+   Item *location = list -> root;
+   int id = 1;
+   while(location != NULL){
+
+     if(location -> next == NULL){
+       node -> id = id;
+       location -> next = node;
+       break;
+     }
+     location = location -> next;
+     id++;
+   }
+ }
 }
 
+
+char *get_history(List *list, int id){
+  Item *location = list -> root;
+  while(location != NULL){
+    if(location -> id == id) return location -> str;
+    location = location -> next;
+  }
+  return NULL;
+}
+
+void print_history(List *list){
+  Item *location = list -> root;
+  printf("-----List History-----\n");
+  while(location != NULL){
+    printf("[%d]--%s\n",location -> id,location -> str);
+      location = location -> next;
+  }
+}
+
+void free_history(List *list){
+  Item *location = list -> root;
+  Item *location2 = location -> next;
+  while(location2 != NULL){
+    free(location -> str);
+    free(location);
+    location = location2;
+    location2 = location2 -> next;
+  }
+  free(location -> str);
+  free(location);
+  free(list);
 }
