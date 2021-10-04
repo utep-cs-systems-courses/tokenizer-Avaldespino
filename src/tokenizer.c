@@ -4,7 +4,8 @@
 int space_char(char c){
   if(c == '\t' || c == ' ' || c == '\n'){
     // printf("Space_char = %c\n",c);
-    return 1;}
+    return 1;
+  }
   return 0;
 
 }
@@ -12,7 +13,8 @@ int non_space_char(char c){
   // printf("non_space = %c\n",c);
   if(!space_char(c)){
     // printf("Returning non space true\n");
-    return 1;}
+    return 1;
+  }
   
   return 0;
 }
@@ -37,7 +39,7 @@ char *word_terminator(char *word){
     if(space_char(*word)) return word;
     word++;
   }
-  return '\0';
+  return 0;
 }
 
 
@@ -125,4 +127,5 @@ char *copy_str(char *inStr, short len){
      free(tokens[i]);
      ++i;
    }
+   free(tokens);
  }
